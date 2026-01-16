@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aux Pieds de Maître | Sol & Épargne Collective</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:wght@300;400;700&display=swap');
+
+        :root {
+            --primary: #0a2342; /* Bleu Marine Professionnel */
+            --secondary: #c5a059; /* Or / Prestige */
+            --accent: #27ae60; /* Vert pour le succès */
+            --light: #f4f7f6;
+            --white: #ffffff;
+            --dark: #051426;
+            --gold-light: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8fafb 0%, #f0f3f7 100%);
+            color: var(--primary);
+            line-height: 1.7;
+            font-family: 'Lato', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: linear-gradient(90deg, var(--primary) 0%, #0f2f52 100%);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(10, 35, 66, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-phone {
+            color: var(--secondary);
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: rgba(197, 160, 89, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-phone:hover {
+            background: rgba(197, 160, 89, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, rgba(10, 35, 66, 0.92) 0%, rgba(15, 47, 82, 0.88) 50%, rgba(10, 35, 66, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 100px 20px 120px;
+            text-align: center;
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-box h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--white) 0%, #e8e8e8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-box h1::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.05rem, 3vw, 1.5rem);
+            margin-bottom: 50px;
+            max-width: 950px;
+            color: #e8f0f7;
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+            width: 100%;
+            max-width: 1000px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 1.5px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--secondary);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
+        }
+
+        .stat-card h3 { 
+            color: var(--gold-light); 
+            font-size: clamp(1.4rem, 3vw, 2rem); 
+            margin-bottom: 10px;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-card p {
+            color: #d8e5f0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Sections Générales */
+        .section { 
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title h2 { 
+            color: var(--primary); 
+            font-size: clamp(2rem, 5vw, 2.8rem); 
+            margin-bottom: 15px;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .section-title div {
+            width: 100px; 
+            height: 3px; 
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            margin: 0 auto;
+        }
+
+        /* Founders Section */
+        .founders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .founder-card {
+            background: var(--white);
+            padding: 45px 35px;
+            border-radius: 18px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--secondary);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .founder-card:hover::before {
+            opacity: 1;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(10, 35, 66, 0.15);
+            border-top-color: var(--gold-light);
+        }
+
+        .founder-card i { 
+            font-size: 3.5rem; 
+            color: var(--secondary);
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+        }
+
+        .founder-card:hover i {
+            color: var(--gold-light);
+            transform: scale(1.15);
+        }
+
+        .founder-card h4 { 
+            font-size: 1.5rem; 
+            margin-bottom: 10px; 
+            color: var(--primary);
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .role { 
+            color: var(--secondary); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 0.8rem; 
+            letter-spacing: 2px; 
+            margin-bottom: 25px; 
+            display: block;
+        }
+
+        .founder-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f2f52 100%);
+            color: var(--white);
+            padding: 50px 40px;
+            border-radius: 18px;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid transparent;
+            overflow: hidden;
+        }
+
+        .price-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            transition: all 0.6s ease;
+            pointer-events: none;
+        }
+
+        .price-box:hover::before {
+            top: -25%;
+            right: -25%;
+        }
+
+        .price-box:hover { 
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 70px rgba(197, 160, 89, 0.25);
+        }
+
+        .price-box.featured { 
+            border: 2px solid var(--secondary);
+            transform: scale(1.08);
+            background: linear-gradient(135deg, var(--primary) 0%, #1a3f5f 100%);
+        }
+
+        .price-box.featured:hover {
+            transform: scale(1.08) translateY(-20px);
+            box-shadow: 0 40px 80px rgba(197, 160, 89, 0.35);
+        }
+
+        .price-box h3 { 
+            color: var(--gold-light); 
+            margin-bottom: 20px; 
+            font-size: 1.7rem;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .amount { 
+            font-size: clamp(2.2rem, 4vw, 3rem); 
+            font-weight: 800; 
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, #e8c04a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-box p {
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            color: #e8f0f7;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fee { 
+            font-size: 0.85rem; 
+            color: #b8c8d8; 
+            margin-top: 25px; 
+            border-top: 1px solid rgba(212, 175, 55, 0.3); 
+            padding-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Boutons */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--secondary) 0%, #d4af37 100%);
+            color: var(--primary);
+            padding: 16px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.35);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover { 
+            background: linear-gradient(135deg, #d4af37 0%, var(--secondary) 100%);
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.5);
+            color: var(--primary);
+        }
+
+        .cta-btn:active {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: linear-gradient(135deg, rgba(10, 35, 66, 0.05) 0%, rgba(197, 160, 89, 0.03) 100%);
+            padding: 50px 40px;
+            border-radius: 18px;
+            border-left: 6px solid var(--secondary);
+            border-top: 2px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .contact-item {
+            margin: 30px 0;
+            text-align: center;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .contact-item h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .contact-item h3 i {
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        .contact-phone {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .contact-phone:hover {
+            color: var(--secondary);
+            transform: scale(1.08);
+        }
+
+        .contact-phone i {
+            color: var(--secondary);
+            font-size: 1.4em;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-phone:hover i {
+            transform: rotate(12deg) scale(1.2);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25d366 0%, #20ba58 100%);
+            color: #FFF;
+            border-radius: 50px;
+            font-size: 35px;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: pulse 2.5s infinite, float 3s ease-in-out infinite;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid white;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            bottom: 38px;
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #0a2342 100%);
+            color: white;
+            padding: 60px 20px 30px;
+            text-align: center;
+            border-top: 4px solid var(--secondary);
+            position: relative;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-weight: 300;
+        }
+
+        footer strong {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section { 
+                padding: 60px 5%;
+            }
+
+            header {
+                min-height: 60vh;
+                padding: 60px 20px 80px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                font-size: 0.85rem;
+            }
+
+            .nav-phone {
+                display: none;
+            }
+
+            .logo-box h1 { 
+                font-size: 1.8rem;
+            }
+
+            .stats-bar {
+                gap: 15px;
+                grid-template-columns: 1fr;
+            }
+
+            .price-box.featured {
+                transform: scale(1);
+            }
+
+            .price-box.featured:hover {
+                transform: scale(1) translateY(-20px);
+            }
+
+            .contact-phone {
+                font-size: 1.6rem;
+            }
+
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .cta-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .nav-logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            header {
+                min-height: 50vh;
+                padding: 40px 15px 60px;
+            }
+
+            .logo-box h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .section {
+                padding: 40px 4%;
+            }
+
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+
+            .founders {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-item {
+                margin: 20px 0;
+            }
+
+            footer {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="nav-logo">
+            <i class="fas fa-crown"></i> Aux Pieds de Maître
+        </a>
+        <ul class="nav-links">
+            <li><a href="#options">Options</a></li>
+            <li><a href="#equipe">Équipe</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="tel:+50946507582" class="nav-phone">
+            <i class="fas fa-phone-alt"></i> +509 4650-7582
+        </a>
+    </nav>
+
+    <a href="https://wa.me/50946507582?text=Bonjour%20Aux%20Pieds%20de%20Maître,%20je%20souhaite%20avoir%20des%20informations%20pour%20rejoindre%20le%20Sol." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="logo-box">
+            <h1>Aux Pieds de Maître</h1>
+        </div>
+        <p class="hero-subtitle">Le mécanisme d'épargne collective sécurisé, pensé et géré par des ingénieurs pour garantir vos projets.</p>
+        
+        <div class="stats-bar">
+            <div class="stat-card">
+                <h3>5,000 HTG</h3>
+                <p>Cycle Mensuel</p>
+            </div>
+            <div class="stat-card">
+                <h3>2,500 HTG</h3>
+                <p>Cycle Quinzaine</p>
+            </div>
+            <div class="stat-card">
+                <h3>Ce Samedi</h3>
+                <p>Lancement du Sol</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center;">
+            <a href="https://wa.me/50946507582" class="cta-btn">
+                <i class="fab fa-whatsapp"></i> RÉSERVER MA PLACE
+            </a>
+            <div style="color: #e8e8e8; font-size: 0.95rem;">
+                Ou appelez-nous au <a href="tel:+34950568" style="color: var(--secondary); font-weight: bold; text-decoration: none;">34 950 568</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section" id="equipe">
+        <div class="section-title">
+            <h2>L'Expertise au Sommet</h2>
+            <p>Une équipe d'ingénieurs expérimentés garantissant la sécurité et la rigueur</p>
+            <div></div>
+        </div>
+        <div class="founders">
+            <div class="founder-card">
+                <i class="fas fa-microchip"></i>
+                <h4>Dorfilus Paolatchi</h4>
+                <span class="role">Ingénieur Électronique</span>
+                <p>Spécialiste en systèmes et précision. Sa rigueur garantit une gestion des flux financiers sans aucune faille technique.</p>
+            </div>
+            <div class="founder-card">
+                <i class="fas fa-city"></i>
+                <h4>Naissance Kendy</h4>
+                <span class="role">Ingénieur Civil</span>
+                <p>Expert en planification de structures. Il veille à la solidité du modèle collectif et à la sécurité des engagements de chaque membre.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="options" style="background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f7 50%, #f8f9fb 100%); border-radius: 30px; margin: 80px 5%;">
+        <div class="section-title">
+            <h2>Options de Participation</h2>
+            <p>Choisissez le rythme qui vous convient le mieux et commencez votre épargne collective</p>
+            <div></div>
+        </div>
+        <div class="pricing">
+            <div class="price-box">
+                <h3>Option A</h3>
+                <p class="amount">5,000 HTG</p>
+                <p>Chaque Mois</p>
+                <div class="fee">Frais de gestion : 2.5%</div>
+                <a href="https://wa.me/50946507582" class="cta-btn" style="margin-top: 25px;">Souscrire</a>
+            </div>
+            <div class="price-box featured">
+                <div style="background:var(--secondary); color:var(--primary); position:absolute; top:0; left:50%; transform:translateX(-50%); padding:8px 25px; border-radius:0 0 10px 10px; font-size:0.8rem; font-weight:bold;">★ POPULAIRE ★</div>
+                <h3>Option B</h3>
+                <p class="amount">2,500 HTG</p>
+                <p>Toutes les 2 semaines</p>
+                <div class="fee">Frais de gestion : 2.5%</div>
+                <a href="https://wa.me/50946507582" class="cta-btn" style="margin-top: 25px;">Souscrire</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Contactez-nous</h2>
+            <p>Besoin d'aide ou prêt à verser votre première contribution ?</p>
+            <div></div>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3><i class="fas fa-user-tie"></i> Directeur Administratif</h3>
+                <a href="tel:+50946507582" class="contact-phone">
+                    <i class="fas fa-phone-alt"></i> +509 4650-7582
+                </a>
+            </div>
+            <div style="margin: 20px 0; color: #999;">|</div>
+            <div class="contact-item">
+                <h3><i class="fas fa-phone"></i> Numéro Principal</h3>
+                <a href="tel:+34950568" class="contact-phone">
+                    <i class="fas fa-phone"></i> 34 950 568
+                </a>
+            </div>
+            <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(10, 35, 66, 0.1); text-align: center; color: #666; font-size: 0.95rem;">
+                <i class="fas fa-info-circle" style="color: var(--secondary);"></i> Le bureau de gestion est ouvert pour enregistrer les nouveaux membres. Contactez-nous dès aujourd'hui pour plus d'informations.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <strong>Aux Pieds de Maître</strong>. Tous droits réservés.</p>
+        <p style="font-size: 0.8rem; color: #7f8c8d; margin-top: 10px;">Une initiative de Ing. Dorfilus Paolatchi & Ing. Naissance Kendy</p>
+    </footer>
+
+</body>
+</html>
