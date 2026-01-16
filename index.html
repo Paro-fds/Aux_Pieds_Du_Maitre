@@ -124,7 +124,7 @@
         /* Hero Section */
         header {
             background: linear-gradient(135deg, rgba(10, 35, 66, 0.92) 0%, rgba(15, 47, 82, 0.88) 50%, rgba(10, 35, 66, 0.9) 100%), 
-                        url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80');
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -270,6 +270,166 @@
             color: #d8e5f0;
             font-size: 0.95rem;
             font-weight: 500;
+        }
+
+        /* Choices Section */
+        .choices-section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+        }
+
+        .choices-section .section-title {
+            margin-bottom: 80px;
+        }
+
+        .choices-section .section-title h2 {
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .choices-section .section-title p {
+            font-size: 1.3rem;
+            color: #888;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .choices-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .choice-card {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .choice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .choice-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .choice-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            border-color: rgba(197, 160, 89, 0.3);
+        }
+
+        .choice-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            transition: all 0.4s ease;
+        }
+
+        .choice-card:hover .choice-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .sol-card .choice-icon {
+            color: var(--secondary);
+        }
+
+        .books-card .choice-icon {
+            color: var(--primary);
+        }
+
+        .books-card:hover .choice-icon {
+            color: var(--secondary);
+        }
+
+        .choice-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .choice-subtitle {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .choice-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .choice-features {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .choice-features li {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .choice-features li i {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .choice-card:hover .choice-features li {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .choice-btn {
+            display: block;
+            text-align: center;
+            width: 100%;
+            margin: 0 !important;
+            padding: 16px 40px !important;
+        }
+
+        .sol-card {
+            border-top: 5px solid var(--secondary);
+        }
+
+        .books-card {
+            border-top: 5px solid var(--primary);
         }
 
         /* Sections Générales */
@@ -484,6 +644,126 @@
             z-index: 2;
         }
 
+        /* Books Section */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+
+        .book-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .book-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 30px 70px rgba(197, 160, 89, 0.2);
+            border-top-color: var(--gold-light);
+        }
+
+        .book-card.featured {
+            transform: scale(1.05);
+        }
+
+        .book-card.featured:hover {
+            transform: scale(1.05) translateY(-20px);
+            box-shadow: 0 40px 90px rgba(197, 160, 89, 0.3);
+        }
+
+        .book-cover {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f2f52 100%);
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-cover i {
+            font-size: 4rem;
+            color: var(--gold-light);
+            transition: all 0.4s ease;
+        }
+
+        .book-card:hover .book-cover i {
+            transform: scale(1.2) rotate(10deg);
+            color: var(--secondary);
+        }
+
+        .book-cover.featured-cover {
+            background: linear-gradient(135deg, var(--secondary) 0%, #d4af37 100%);
+        }
+
+        .book-cover.featured-cover i {
+            color: var(--primary);
+        }
+
+        .book-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(197, 160, 89, 0.9);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .book-badge.featured-badge {
+            background: rgba(10, 35, 66, 0.9);
+        }
+
+        .book-card h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin: 20px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+        }
+
+        .book-author {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 20px 15px;
+        }
+
+        .book-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 20px 20px;
+            min-height: 60px;
+        }
+
+        .book-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .book-card a {
+            margin: 20px !important;
+            margin-top: 10px !important;
+        }
+
         /* Boutons */
         .cta-btn {
             display: inline-flex;
@@ -653,6 +933,23 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .choices-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .choice-card {
+                padding: 40px 30px;
+            }
+
+            .choice-icon {
+                font-size: 3rem;
+            }
+
+            .choice-card h3 {
+                font-size: 1.6rem;
+            }
+
             .section { 
                 padding: 60px 5%;
             }
@@ -775,6 +1072,7 @@
         </a>
         <ul class="nav-links">
             <li><a href="#options">Options</a></li>
+            <li><a href="#livres">Librairie</a></li>
             <li><a href="#equipe">Équipe</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -791,32 +1089,66 @@
         <div class="logo-box">
             <h1>Aux Pieds de Maître</h1>
         </div>
-        <p class="hero-subtitle">Le mécanisme d'épargne collective sécurisé, pensé et géré par des ingénieurs pour garantir vos projets.</p>
+        <p class="hero-subtitle">Plateforme innovante d'épargne collective et de ressources académiques. Choisissez votre parcours.</p>
         
         <div class="stats-bar">
             <div class="stat-card">
-                <h3>5,000 HTG</h3>
-                <p>Cycle Mensuel</p>
+                <h3>2 Services</h3>
+                <p>Sol & Librairie</p>
             </div>
             <div class="stat-card">
-                <h3>2,500 HTG</h3>
-                <p>Cycle Quinzaine</p>
+                <h3>Expert</h3>
+                <p>Ingénieurs Qualifiés</p>
             </div>
             <div class="stat-card">
-                <h3>Ce Samedi</h3>
-                <p>Lancement du Sol</p>
+                <h3>100% Sécurisé</h3>
+                <p>Votre Confiance</p>
             </div>
         </div>
 
         <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center;">
-            <a href="https://wa.me/50946507582" class="cta-btn">
-                <i class="fab fa-whatsapp"></i> RÉSERVER MA PLACE
-            </a>
-            <div style="color: #e8e8e8; font-size: 0.95rem;">
-                Ou appelez-nous au <a href="tel:+34950568" style="color: var(--secondary); font-weight: bold; text-decoration: none;">34 950 568</a>
-            </div>
+            <p style="color: #e8e8e8; font-size: 1rem; font-weight: 500;">👇 Découvrez nos solutions ci-dessous</p>
         </div>
     </header>
+
+    <section class="choices-section">
+        <div class="section-title">
+            <h2>Bienvenue sur Aux Pieds de Maître</h2>
+            <p>Choisissez votre destination</p>
+            <div></div>
+        </div>
+        <div class="choices-container">
+            <div class="choice-card sol-card">
+                <div class="choice-icon">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <h3>Le Sol</h3>
+                <p class="choice-subtitle">Épargne Collective Sécurisée</p>
+                <p class="choice-description">Participez à notre mécanisme d'épargne collective pensé et géré par des ingénieurs. Choisissez votre rythme et commencez à construire votre futur.</p>
+                <ul class="choice-features">
+                    <li><i class="fas fa-check"></i> Gestion 100% sécurisée</li>
+                    <li><i class="fas fa-check"></i> Cycles mensuels et quinzainaires</li>
+                    <li><i class="fas fa-check"></i> Équipe d'ingénieurs experts</li>
+                </ul>
+                <a href="#options" class="cta-btn choice-btn">Découvrir le Sol</a>
+            </div>
+
+            <div class="choice-card books-card">
+                <div class="choice-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Librairie MPC1</h3>
+                <p class="choice-subtitle">Manuels Académiques Prestigieux</p>
+                <p class="choice-description">Accédez à notre collection exclusive de manuels scolaires de référence. Des ouvrages essentiels pour réussir vos études et approfondir vos connaissances.</p>
+                <ul class="choice-features">
+                    <li><i class="fas fa-check"></i> Manuels de qualité supérieure</li>
+                    <li><i class="fas fa-check"></i> Auteurs reconnus mondialement</li>
+                    <li><i class="fas fa-check"></i> Packs avantageux disponibles</li>
+                </ul>
+                <a href="#livres" class="cta-btn choice-btn">Explorer la Librairie</a>
+            </div>
+        </div>
+    </section>
 
     <section class="section" id="equipe">
         <div class="section-title">
@@ -867,6 +1199,98 @@
 
     <section id="contact" class="section">
         <div class="section-title">
+            <h2>L'Expertise au Sommet</h2>
+            <p>Une équipe d'ingénieurs expérimentés garantissant la sécurité et la rigueur</p>
+            <div></div>
+        </div>
+        <div class="founders">
+            <div class="founder-card">
+                <i class="fas fa-microchip"></i>
+                <h4>Dorfilus Paolatchi</h4>
+                <span class="role">Ingénieur Électronique</span>
+                <p>Spécialiste en systèmes et précision. Sa rigueur garantit une gestion des flux financiers sans aucune faille technique.</p>
+            </div>
+            <div class="founder-card">
+                <i class="fas fa-city"></i>
+                <h4>Naissance Kendy</h4>
+                <span class="role">Ingénieur Civil</span>
+                <p>Expert en planification de structures. Il veille à la solidité du modèle collectif et à la sécurité des engagements de chaque membre.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="livres" style="background: linear-gradient(135deg, #faf9f6 0%, #f5f1ea 50%, #fef9f4 100%); border-radius: 30px; margin: 80px 5%;">
+        <div class="section-title">
+            <h2>Librairie MPC1</h2>
+            <p>Accédez à une collection exclusive de livres pour développer vos connaissances financières et entrepreneuriales</p>
+            <div></div>
+        </div>
+        <div class="books-grid">
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-flask-vial"></i>
+                    <span class="book-badge">Chimie</span>
+                </div>
+                <h3>Chimie Générale</h3>
+                <p class="book-author">Par Donald A. McQuarrie</p>
+                <p class="book-description">Manuel complet de chimie couvrant les principes fondamentaux, réactions chimiques et équilibres thermodynamiques. Référence académique incontournable.</p>
+                <a href="https://wa.me/50946507582?text=Je%20veux%20commander%20Chimie%20Générale%20McQuarrie" class="cta-btn" style="width: 100%; justify-content: center; margin-top: 20px;">Commander</a>
+            </div>
+
+            <div class="book-card featured">
+                <div class="book-cover featured-cover">
+                    <i class="fas fa-wave-square"></i>
+                    <span class="book-badge featured-badge">Physique Classique</span>
+                </div>
+                <h3>Physique</h3>
+                <p class="book-author">Par Harris Benson</p>
+                <p class="book-description">Traité complet de physique couvrant la mécanique, thermodynamique, électricité et optique. Essentiellement une bible pour les étudiants.</p>
+                <a href="https://wa.me/50946507582?text=Je%20veux%20commander%20Physique%20Harris%20Benson" class="cta-btn" style="width: 100%; justify-content: center; margin-top: 20px;">Commander</a>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-calculator"></i>
+                    <span class="book-badge">Mathématiques</span>
+                </div>
+                <h3>Analyse Mathématique</h3>
+                <p class="book-author">Par Jean-Marie Monier</p>
+                <p class="book-description">Analyse complète avec suites, séries, fonctions, dérivées et intégrales. Texte de référence pour les cours d'analyse supérieure.</p>
+                <a href="https://wa.me/50946507582?text=Je%20veux%20commander%20Analyse%20Mathématique%20Monier" class="cta-btn" style="width: 100%; justify-content: center; margin-top: 20px;">Commander</a>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-cube"></i>
+                    <span class="book-badge">Géométrie</span>
+                </div>
+                <h3>Géométrie Moderne</h3>
+                <p class="book-author">Par Ilia N. Ligel</p>
+                <p class="book-description">Approche moderne de la géométrie euclidienne, transformations géométriques et propriétés spatiales. Excellente pour approfondir la géométrie.</p>
+                <a href="https://wa.me/50946507582?text=Je%20veux%20commander%20Géométrie%20Moderne%20Ligel" class="cta-btn" style="width: 100%; justify-content: center; margin-top: 20px;">Commander</a>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-shapes"></i>
+                    <span class="book-badge">Géométrie</span>
+                </div>
+                <h3>Géométrie Élémentaire</h3>
+                <p class="book-author">Par Juan de Burgos Carralt</p>
+                <p class="book-description">Géométrie élémentaire et descriptive. Fondations solides pour comprendre les structures géométriques et leurs applications pratiques.</p>
+                <a href="https://wa.me/50946507582?text=Je%20veux%20commander%20Géométrie%20Élémentaire%20Carralt" class="cta-btn" style="width: 100%; justify-content: center; margin-top: 20px;">Commander</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 60px; padding: 40px; background: white; border-radius: 15px; text-align: center; border-left: 5px solid var(--secondary);">
+            <h3 style="color: var(--primary); margin-bottom: 15px; font-family: 'Playfair Display', serif;">📚 Pack Complet Études</h3>
+            <p style="color: #666; margin-bottom: 20px; font-size: 1.05rem;">Achetez tous les 5 livres et recevez 10% de réduction + Livraison gratuite</p>
+            <a href="https://wa.me/50946507582?text=Je%20suis%20intéressé%20par%20le%20Pack%20Complet%20Études" class="cta-btn">Demander le Pack</a>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-title">
             <h2>Contactez-nous</h2>
             <p>Besoin d'aide ou prêt à verser votre première contribution ?</p>
             <div></div>
@@ -895,6 +1319,321 @@
         <p>&copy; 2026 <strong>Aux Pieds de Maître</strong>. Tous droits réservés.</p>
         <p style="font-size: 0.8rem; color: #7f8c8d; margin-top: 10px;">Une initiative de Ing. Dorfilus Paolatchi & Ing. Naissance Kendy</p>
     </footer>
+
+    <script>
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== ANIMATION AU SCROLL =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observer les cartes
+        document.querySelectorAll('.founder-card, .price-box, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // ===== COMPTEUR ANIMÉ POUR LES STATS =====
+        function animateCounter(element, target, duration = 2000) {
+            let current = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 16);
+        }
+
+        // Observer les stats
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const card = entry.target;
+                    const text = card.querySelector('h3')?.textContent || '';
+                    const number = parseInt(text.replace(/\D/g, ''));
+                    
+                    if (!isNaN(number) && number > 100) {
+                        animateCounter(card.querySelector('h3'), number);
+                        statsObserver.unobserve(card);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            statsObserver.observe(card);
+        });
+
+        // ===== RIPPLE EFFECT SUR LES BOUTONS =====
+        document.querySelectorAll('.cta-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple-animation 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // ===== ANIMATION PARALLAXE =====
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollPosition = window.pageYOffset;
+            header.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+        });
+
+        // ===== EFFET HOVER GLOW SUR LES CARTES =====
+        document.querySelectorAll('.founder-card, .price-box').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const glow = card.querySelector('.glow');
+                if (glow) {
+                    glow.style.left = x + 'px';
+                    glow.style.top = y + 'px';
+                    glow.style.opacity = '0.5';
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const glow = card.querySelector('.glow');
+                if (glow) {
+                    glow.style.opacity = '0';
+                }
+            });
+        });
+
+        // ===== NAVIGATION ACTIVE =====
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section, header');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                    link.style.color = 'var(--secondary)';
+                }
+            });
+        });
+
+        // ===== BOUTON MENU MOBILE =====
+        function addMobileMenu() {
+            const nav = document.querySelector('nav');
+            if (window.innerWidth <= 768 && !document.querySelector('.menu-toggle')) {
+                const toggle = document.createElement('button');
+                toggle.className = 'menu-toggle';
+                toggle.innerHTML = '<i class="fas fa-bars"></i>';
+                toggle.style.cssText = `
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    display: none;
+                `;
+                nav.appendChild(toggle);
+            }
+        }
+
+        addMobileMenu();
+
+        // ===== ANIMATION DES CHIFFRES AU DÉFILEMENT =====
+        let animatedElements = new Set();
+
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animatedElements.has(entry.target)) {
+                    animatedElements.add(entry.target);
+                    const text = entry.target.textContent;
+                    const numbers = text.match(/\d+/g);
+                    
+                    if (numbers) {
+                        numbers.forEach(num => {
+                            const targetNum = parseInt(num);
+                            if (targetNum > 100) {
+                                animateCounter(entry.target, targetNum, 1500);
+                            }
+                        });
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // ===== TOOLTIP SUR LES ÉLÉMENTS =====
+        function addTooltips() {
+            const elements = document.querySelectorAll('[data-tooltip]');
+            elements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    const tooltip = document.createElement('div');
+                    tooltip.textContent = el.dataset.tooltip;
+                    tooltip.style.cssText = `
+                        position: absolute;
+                        background: var(--primary);
+                        color: white;
+                        padding: 8px 12px;
+                        border-radius: 6px;
+                        font-size: 0.85rem;
+                        white-space: nowrap;
+                        z-index: 1000;
+                        animation: fadeInUp 0.3s ease;
+                    `;
+                    document.body.appendChild(tooltip);
+                    const rect = el.getBoundingClientRect();
+                    tooltip.style.left = rect.left + 'px';
+                    tooltip.style.top = (rect.top - 40) + 'px';
+                });
+            });
+        }
+
+        addTooltips();
+
+        // ===== SCROLL PROGRESS BAR =====
+        function addProgressBar() {
+            const progressBar = document.createElement('div');
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                background: linear-gradient(90deg, var(--secondary) 0%, var(--gold-light) 100%);
+                z-index: 999;
+                transition: width 0.1s ease;
+            `;
+            document.body.appendChild(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            });
+        }
+
+        addProgressBar();
+
+        // ===== PRELOAD ANIMATIONS =====
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // ===== DARK MODE TOGGLE (Optional) =====
+        function addDarkModeToggle() {
+            const toggle = document.createElement('button');
+            toggle.innerHTML = '<i class="fas fa-moon"></i>';
+            toggle.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: var(--secondary);
+                color: white;
+                border: none;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                z-index: 999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+            `;
+
+            toggle.addEventListener('mouseover', () => {
+                toggle.style.transform = 'scale(1.1)';
+            });
+
+            toggle.addEventListener('mouseleave', () => {
+                toggle.style.transform = 'scale(1)';
+            });
+
+            // Optionnel : implémenter le dark mode
+            toggle.addEventListener('click', () => {
+                toggle.innerHTML = toggle.innerHTML.includes('moon') 
+                    ? '<i class="fas fa-sun"></i>' 
+                    : '<i class="fas fa-moon"></i>';
+            });
+
+            document.body.appendChild(toggle);
+        }
+
+        // addDarkModeToggle(); // Décommenter si vous voulez le dark mode
+
+    </script>
+
+    <style>
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .nav-links a.active {
+            color: var(--secondary) !important;
+        }
+
+        body {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
 
 </body>
 </html>
